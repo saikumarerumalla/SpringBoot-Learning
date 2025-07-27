@@ -31,6 +31,7 @@ public class StudentController {
 
         try {
             jobLauncher.run(job, jobParameters);
+
         } catch (JobExecutionAlreadyRunningException
                  | JobRestartException
                  | JobInstanceAlreadyCompleteException
