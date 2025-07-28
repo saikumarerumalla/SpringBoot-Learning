@@ -33,6 +33,7 @@ public class BatchConfig {
         this.repository = repository;
         this.jobRepository = jobRepository;
         this.platformTransactionManager = platformTransactionManager;
+
     }
 
 
