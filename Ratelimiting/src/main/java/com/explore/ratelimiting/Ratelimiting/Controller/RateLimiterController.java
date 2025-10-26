@@ -37,7 +37,6 @@ public class RateLimiterController {
 
             return ResponseEntity.ok(response);
         } else {
-            // Check which limit was exceeded and create appropriate error response
             RateLimiterService.RateLimitStatus status = rateLimiterService.getRateLimitStatus(userId);
 
             ErrorDetails errorDetails;
@@ -68,7 +67,6 @@ public class RateLimiterController {
     public ResponseEntity<ForgotPasswordResponse> forgotPasswordEndpoint(@RequestParam String email) {
 
         if (rateLimiterService.isAllowedForForgotPassword()) {
-            // Create successful password reset response using POJOs
             PasswordResetData resetData = PasswordResetData.create(email, null);
 
             ForgotPasswordResponse response = ForgotPasswordResponse.success(
@@ -79,7 +77,6 @@ public class RateLimiterController {
 
             return ResponseEntity.ok(response);
         } else {
-            // Rate limited - too many forgot password attempts
             ErrorDetails errorDetails = ErrorDetails.passwordResetRateLimited();
             String errorMessage = "Too many password reset attempts. Please try again later.";
 
