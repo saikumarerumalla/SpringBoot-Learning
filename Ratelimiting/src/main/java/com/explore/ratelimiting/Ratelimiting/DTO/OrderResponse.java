@@ -23,7 +23,7 @@ public class OrderResponse {
         this.status = status;
     }
 
-    // Static factory methods for success and error responses
+
     public static OrderResponse success(String orderId, OrderData data, Long remainingOrders, Long systemCapacity) {
         OrderResponse response = new OrderResponse(true, "Order placed successfully!", "SUCCESS");
         response.setOrderId(orderId);
@@ -41,7 +41,6 @@ public class OrderResponse {
         return response;
     }
 
-    // Getters and Setters
     public boolean isSuccess() {
         return success;
     }

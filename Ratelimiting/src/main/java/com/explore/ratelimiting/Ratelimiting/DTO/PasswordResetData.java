@@ -10,7 +10,6 @@ public class PasswordResetData {
     private String expiresIn;
     private String sentAt;
 
-    // Constructors
     public PasswordResetData() {}
 
     public PasswordResetData(String email, String userId) {
@@ -21,12 +20,12 @@ public class PasswordResetData {
         this.sentAt = Instant.now().toString();
     }
 
-    // Static factory method
+
     public static PasswordResetData create(String email, String userId) {
         return new PasswordResetData(email, userId);
     }
 
-    // Getters and Setters
+
     public String getEmail() {
         return email;
     }
