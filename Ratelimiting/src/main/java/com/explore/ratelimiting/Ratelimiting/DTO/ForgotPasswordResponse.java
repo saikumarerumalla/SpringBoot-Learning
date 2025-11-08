@@ -26,6 +26,7 @@ public class ForgotPasswordResponse {
         this.status = status;
     }
 
+
     public static ForgotPasswordResponse success(PasswordResetData data, Long remainingAttempts, Long globalCapacity) {
         ForgotPasswordResponse response = new ForgotPasswordResponse(true, "Password reset link sent to your email", "SUCCESS");
         response.setData(data);
@@ -34,6 +35,7 @@ public class ForgotPasswordResponse {
         return response;
     }
 
+
     public static ForgotPasswordResponse rateLimited(String message, ErrorDetails error, Long remainingAttempts, Long globalCapacity) {
         ForgotPasswordResponse response = new ForgotPasswordResponse(false, message, "RATE_LIMITED");
         response.setError(error);
@@ -41,4 +43,5 @@ public class ForgotPasswordResponse {
         response.setGlobalCapacity(globalCapacity);
         return response;
     }
+
 }
