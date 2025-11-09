@@ -34,4 +34,5 @@ public class OrderData {
     public static OrderData create(String userId, String restaurantId, String items, String amount) {
         return new OrderData(userId, restaurantId, items, amount);
     }
+
 }
