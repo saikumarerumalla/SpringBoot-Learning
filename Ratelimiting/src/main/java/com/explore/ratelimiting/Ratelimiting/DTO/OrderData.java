@@ -21,7 +21,6 @@ public class OrderData {
     private String orderStatus;
     private String placedAt;
 
-
     public OrderData(String userId, String restaurantId, String items, String amount) {
         this.userId = userId;
         this.restaurantId = restaurantId;
@@ -35,5 +34,4 @@ public class OrderData {
     public static OrderData create(String userId, String restaurantId, String items, String amount) {
         return new OrderData(userId, restaurantId, items, amount);
     }
-
 }
