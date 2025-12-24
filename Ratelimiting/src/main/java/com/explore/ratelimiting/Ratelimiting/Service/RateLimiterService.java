@@ -108,10 +108,12 @@ public class RateLimiterService {
         return Map.copyOf(userBuckets);
     }
 
+
     public static class RateLimitStatus {
         private final long foodOrderRemaining;
         private final long userRemaining;
         private final boolean userHasBucket;
+
 
         public RateLimitStatus(long foodOrderRemaining, long userRemaining, boolean userHasBucket) {
             this.foodOrderRemaining = foodOrderRemaining;
