@@ -18,6 +18,15 @@
         </processorPath>
         <module name="Ratelimiting" />
       </profile>
+      <profile name="Annotation profile for Spring-Security" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
+        </processorPath>
+        <module name="Spring-Security" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="SpringOauth2" target="21" />
@@ -26,6 +35,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Ratelimiting" options="-parameters" />
+      <module name="Spring-Security" options="-parameters" />
       <module name="SpringBatchProcessing" options="-parameters" />
       <module name="SpringOauth2" options="-parameters" />
     </option>

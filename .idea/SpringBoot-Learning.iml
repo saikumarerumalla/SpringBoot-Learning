@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <output url="file://$MODULE_DIR$/out/production/SpringBoot-Learning" />
-    <output-test url="file://$MODULE_DIR$/out/test/SpringBoot-Learning" />
+    <output url="file://$MODULE_DIR$/Spring-Security" />
+    <output-test url="file://$MODULE_DIR$/Spring-Security" />
     <exclude-output />
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="jdk" jdkName="corretto-21" jdkType="JavaSDK" />
