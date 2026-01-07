@@ -18,5 +18,7 @@ spring:
     redis:
       port: 6379
       host: localhost
-      password:
       timeout: 60000
+jwt:
+  access-token-validity: 900000
+  refresh-token-validity: 604800000
