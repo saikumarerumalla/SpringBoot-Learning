@@ -26,7 +26,7 @@ public class RefreshToken {
     private User user;
 
     @Column(name = "expiry_date", nullable = false)
-    private Instant expiryTime;
+    private Instant expiryDate;
 
     @Column(name = "created_at", nullable = false)
     private Instant createdAt;
