@@ -59,10 +59,10 @@ public class AuthService {
     @Transactional
     public AuthResponse login(@Valid LoginRequest request, HttpServletRequest httpRequest) {
         authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
+                new UsernamePasswordAuthenticationToken(request.getUserName(), request.getPassword())
         );
 
-        User user = userRepo.findByUsername(request.getUsername())
+        User user = userRepo.findByUsername(request.getUserName())
                 .orElseThrow(()-> new RuntimeException("User not found"));
 
         String accessToken = tokenService.generateAccessToken(user);
