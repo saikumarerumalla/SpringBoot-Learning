@@ -1,8 +1,9 @@
 package com.learning.SpringSecurity.Service;
 
+import com.learning.SpringSecurity.Dao.User;
+import com.learning.SpringSecurity.Utility.JwtProperties;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,9 +24,12 @@ public class JwtService {
 
     private final String secretKey;
 
-    public JwtService(){
+    public JwtService(JwtProperties jwtProperties){
+        this.jwtProperties = jwtProperties;
         this.secretKey = generateSecretKey();
     }
+
+    private final JwtProperties jwtProperties;
 
     private String generateSecretKey() {
         try{
@@ -38,15 +42,26 @@ public class JwtService {
         }
     }
 
-
-    public String generateToken(String username) {
+    public String generateAccessToken(User userDetails){
         Map<String, Object> claims = new HashMap<>();
+        return generateToken(userDetails.getUsername(), claims, jwtProperties.getAccessTokenValidity());
+    }
 
+    public String generateAccessToken(Map<String, Object> extraClaims, User userDetails){
+        return generateToken(userDetails.getUsername(), extraClaims, jwtProperties.getAccessTokenValidity());
+    }
+
+    public String generateRefreshToken(User userDetails){
+        Map<String, Object> claims = new HashMap<>();
+        return generateToken(userDetails.getUsername(), claims, jwtProperties.getAccessTokenValidity());
+    }
+
+    public String generateToken(String username, Map<String, Object>claims, Long validity) {
        return Jwts.builder()
                .claims(claims)
                .subject(username)
                .issuedAt(new Date(System.currentTimeMillis()))
-               .expiration(new Date(System.currentTimeMillis() + 1000*60*10))
+               .expiration(new Date(System.currentTimeMillis() + validity))
                .signWith(getKey()).compact();
     }
 
@@ -80,11 +95,19 @@ public class JwtService {
         return (userName.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
+    public boolean validateToken(String token){
+        try{
+            return !isTokenExpired(token);
+        }catch(Exception e){
+            return false;
+        }
+    }
+
     private boolean isTokenExpired(String token) {
         return extractExpiration(token).toInstant().isBefore(new Date( System.currentTimeMillis()).toInstant());
     }
 
-    private Date extractExpiration(String token) {
+    public Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
     }
 }
