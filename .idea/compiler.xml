@@ -18,6 +18,16 @@
         </processorPath>
         <module name="Ratelimiting" />
       </profile>
+      <profile name="Annotation profile for Spring-Security" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
+        </processorPath>
+        <module name="Spring-Security" />
+      </profile>
       <profile name="Annotation profile for Spring_AI" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -25,11 +35,11 @@
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
         </processorPath>
-        <module name="Spring-AI" />
-        <module name="Spring-Security" />
+        <module name="Spring_AI" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Spring-AI" target="21" />
       <module name="SpringOauth2" target="21" />
     </bytecodeTargetLevel>
   </component>
@@ -40,6 +50,7 @@
       <module name="Spring-Security" options="-parameters" />
       <module name="SpringBatchProcessing" options="-parameters" />
       <module name="SpringOauth2" options="-parameters" />
+      <module name="Spring_AI" options="-parameters" />
     </option>
   </component>
 </project>
